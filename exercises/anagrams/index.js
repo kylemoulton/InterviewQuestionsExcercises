@@ -8,13 +8,14 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+/*
 function anagrams(stringA, stringB) {
+    stringA.replace(/[^\w]/g, '').toLowerCase();
+    stringB.replace(/[^\w]/g, '').toLowerCase();
+
     if (stringA.length !== stringB.length) {
         return false;
     }
-
-    stringA.replace(/[^\w]/g, '').toLowerCase();
-    stringB.replace(/[^\w]/g, '').toLowerCase();
 
     let charCountsA = {};
     let charCountsB = {};
@@ -36,6 +37,46 @@ function anagrams(stringA, stringB) {
         }
     }
     return true;
+}
+*/
+
+/*
+function anagrams(stringA, stringB) {
+    let charCountsA = createCharMap(stringA);
+    let charCountsB = createCharMap(stringB);
+
+    if (Object.keys(charCountsA).length !== Object.keys(charCountsB).length) {
+        return false;
+    }
+
+    for (let character in charCountsA) {
+        if (charCountsA[character] !== charCountsB[character]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function createCharMap(string) {
+    const charCounts = {};
+    string.replace(/[^w]/g, '').toLowerCase();
+
+    for (let char of string) {
+        charCounts[char] = charCounts[char] + 1 || 1;
+    }
+
+    return charCounts;
+}
+*/
+
+function anagrams(stringA, stringB) {
+    stringA.replace(/[^w]/g, '');
+    stringB.replace(/[^w]/g, '');
+    
+    const sortedA = stringA.toLowerCase().split('').sort().join('');
+    const sortedB = stringB.toLowerCase().split('').sort().join('');
+    
+    return sortedA === sortedB;
 }
 
 module.exports = anagrams;
