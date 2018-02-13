@@ -17,6 +17,7 @@
 //       '### '
 //       '####'
 
+/*
 function steps(n) {
     for (let i = 1; i <= n; i++) {
         let str = '';
@@ -28,6 +29,21 @@ function steps(n) {
             str += ' ';
         }
         console.log(str);
+    }
+}
+*/
+
+function steps(n) {
+    for (let i = 0; i < n; i++) {
+        let row = '';
+        for (let j = 0; j < n; j++) {
+            if (j <= i) {
+                row += '#';
+            } else {
+                row += ' ';
+            }
+        }     
+        console.log(row);
     }
 }
 
