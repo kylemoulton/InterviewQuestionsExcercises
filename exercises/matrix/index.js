@@ -15,6 +15,7 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
+/*
 function matrix(n) {
     let arr = [];
     let innerArr = [];
@@ -71,6 +72,46 @@ function matrix(n) {
         val++;
     }
 
+    return arr;
+}
+*/
+
+function matrix(n) {
+    let arr = [];
+
+    for (let i = 0; i < n; i++) {
+        arr.push([]);
+    }
+
+    let startRow = 0;
+    let startCol = 0;
+    let endRow = n - 1;
+    let endCol = n - 1;
+    
+    let counter = 1;
+
+    while (startRow <= endRow && startCol <= endCol) {
+        for (let i = startCol; i <= endCol; i++) {
+            arr[startRow][i] = counter;
+            counter++;
+        }
+        startRow++;
+        for (let i = startRow; i <= endRow; i++) {
+            arr[i][endCol] = counter;
+            counter++;
+        }
+        endCol--;
+        for (let i = endCol; i >= startCol; i--) {
+            arr[endRow][i] = counter;
+            counter++;
+        }
+        endRow--;
+        for (let i = endRow; i >= startRow; i--) {
+            arr[i][startCol] = counter;
+            counter++;
+        }
+        startCol++;
+    }
     return arr;
 }
 
