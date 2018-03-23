@@ -13,19 +13,16 @@
 
 function levelWidth(root) {
     let counts = [0];
-    let vals = [root];
-    let countIndex = 0;
-    vals.push('end');
+    let vals = [root, 'end'];
     while (vals.length > 1) {
         let currentNode = vals.shift();
         
         if (currentNode === 'end') {
             vals.push(currentNode);
             counts.push(0);
-            countIndex++;
         } else {
             vals.push(...currentNode.children);
-            counts[countIndex]++;
+            counts[counts.length - 1]++;
         }
     }
 
