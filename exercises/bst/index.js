@@ -18,6 +18,7 @@ class Node {
         this.right = null;
     }
 
+    /*
     insert(data) {
         let currentNode = this;
 
@@ -70,6 +71,42 @@ class Node {
         }
 
         return null;
+    }
+    */
+
+    insert(data) {
+        if (data < this.data) {
+            if (this.left) {
+                this.left.insert(data);
+            } else {
+                this.left = new Node(data);
+            }
+        } else {
+            if (this.right) {
+                this.right.insert(data);
+            } else {
+                this.right = new Node(data);
+            }
+        }
+    }
+
+    contains(data) {
+        if (data === this.data) {
+            return this;
+        }
+        if (data < this.data) {
+            if (this.left) {
+                return this.left.contains(data);
+            } else {
+                return null;
+            }
+        } else {
+            if (this.right) {
+                return this.right.contains(data);
+            } else {
+                return null;
+            }
+        }
     }
 }
 
