@@ -90,6 +90,7 @@ class Node {
         }
     }
 
+    /*
     contains(data) {
         if (data === this.data) {
             return this;
@@ -108,6 +109,22 @@ class Node {
             }
         }
     }
+    */
+
+   contains(data) {
+    if (data === this.data) {
+        return this;
+    }
+    if (data < this.data && this.left) {
+        return this.left.contains(data);
+    } else if (data > this.data && this.right) {
+        return this.right.contains(data);
+    } else {
+        return null;
+    }
+}
+
+
 }
 
 
